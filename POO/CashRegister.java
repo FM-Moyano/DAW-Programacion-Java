@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CashRegister/* extends ArrayList<Movent>*/ {
+public class CashRegister {
   
   List<Movent> cashRegister = new ArrayList<>();
   
@@ -13,6 +13,7 @@ public class CashRegister/* extends ArrayList<Movent>*/ {
   public void add(LocalDateTime dateTime, double amount, String concept) {
     Movent movent = new Movent(dateTime,amount,concept);
     cashRegister.add(movent);
+ 
   }
   
   public void add(double amount, String concept) {
@@ -21,7 +22,7 @@ public class CashRegister/* extends ArrayList<Movent>*/ {
   }
   
   public void deleteLast() {
-    cashRegister.remove(cashRegister.size()-1);
+    cashRegister.remove(cashRegister.size()-1);   
     
   }
   

@@ -6,7 +6,8 @@ import java.time.format.DateTimeFormatter;
 public class Movent {
 
   private static int lastNumber= 0;
-  public static double saldo ;
+  public static double saldoAnterior = 0 ;
+  public double saldo;
   int number;
   LocalDateTime dateTime;
   double amount;
@@ -19,7 +20,8 @@ public class Movent {
     this.concept = concept;
     lastNumber++;
     number = lastNumber;
-    saldo += amount;
+    saldo = saldoAnterior  +amount;
+    saldoAnterior = saldo;
  
   }
   public Movent(LocalDateTime dateTime, double amount, String concept) {
@@ -28,13 +30,23 @@ public class Movent {
     this.concept = concept;
     lastNumber++;
     number = lastNumber;
-    saldo += amount;
+    saldo = saldoAnterior  +amount;
+    saldoAnterior = saldo;
   }
 
+ 
+  public static void setSaldoAnterior(double saldo) {
+    Movent.saldoAnterior = saldo;
+  }
+  public double getAmount() {
+    return amount;
+  }
+  
   @Override
   public String toString() {
     if(amount <0) {
-      return number + "\t" +dateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\t " +dateTime.format(DateTimeFormatter.ofPattern("HH:mm")) + "\t " +"\t" + amount
+      return number + "\t" +dateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\t " 
+          +dateTime.format(DateTimeFormatter.ofPattern("HH:mm")) + "\t " +"\t" + amount
           + "\t" + saldo + "\t" + concept;
     }else {
       
